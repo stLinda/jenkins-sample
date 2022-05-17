@@ -19,7 +19,7 @@ node () {
 	
 	stage('Quality check') {
 	withSonarQubeEnv('Sonar') {
-	bat "verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins-demoLInda"
+	bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins-demoLInda"
 	    }
 	}
 	
