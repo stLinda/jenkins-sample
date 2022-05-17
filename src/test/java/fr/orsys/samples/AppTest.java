@@ -57,7 +57,7 @@ public class AppTest
     {
         assertTrue( false);
     }
-     public void testApp3()
+     public void testApp4()
     {
         assertTrue( true);
     }
