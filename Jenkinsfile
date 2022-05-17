@@ -3,16 +3,6 @@
 timestamps {
 
 node () {
-	
-	stage('Quality check') {
-withSonarQubeEnv('Sonar') {
-bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
--Dsonar.projectKey=jenkins-demoLinda"
-}
-}
-	
-	
-
 	stage ('APP-IC - Checkout') {
  	 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git-login', url: 'https://github.com/stLinda/jenkins-sample.git']]]) 
 	}
@@ -26,6 +16,13 @@ bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 			} 
  		} 
 	}
+	
+	stage('Quality check') {
+	withSonarQubeEnv('Sonar') {
+	bat "verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins-demoLInda"
+	    }
+	}
+	
 	stage ('APP-IC - Post build actions') {
 /*
 Please note this is a direct conversion of post-build actions. 
